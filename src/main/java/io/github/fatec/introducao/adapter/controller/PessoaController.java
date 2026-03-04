@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.fatec.introducao.dto.request.PessoaPostRequest;
-import io.github.fatec.introducao.dto.request.PessoaUpdateRequest;
-import io.github.fatec.introducao.dto.response.PessoaResponse;
+import io.github.fatec.introducao.adapter.dto.request.PessoaPostRequest;
+import io.github.fatec.introducao.adapter.dto.request.PessoaUpdateRequest;
+import io.github.fatec.introducao.adapter.dto.response.PessoaResponse;
+
+
+
 
 @RestController
 @RequestMapping(value = "pessoa")
