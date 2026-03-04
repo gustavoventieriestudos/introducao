@@ -1,9 +1,9 @@
-package io.github.fatec.introducao.controller;
+package io.github.fatec.introducao.adapter.controller;
+
+import java.util.UUID;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.UUID;
 
 @RestController
 public class TestController {
@@ -13,5 +13,5 @@ public class TestController {
         String id = UUID.randomUUID().toString();
         return id;
     }
-
+    
 }
