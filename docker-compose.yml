@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    hostname: mongo
+    container_name: mongo
+    restart: unless-stopped
+    environment:
+      - "TZ=America/Sao_Paulo"
+    ports:
+      - "27017:27017"
