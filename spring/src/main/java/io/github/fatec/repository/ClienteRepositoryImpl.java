@@ -1,10 +1,14 @@
 package io.github.fatec.repository;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Repository;
+
 import io.github.fatec.entity.Cliente;
 import io.github.fatec.repository.adapter.ClienteRepositoryAdapter;
 import io.github.fatec.repository.mongo.ClienteRepositoryWithMongoDB;
 import io.github.fatec.repository.orm.ClienteOrmMongo;
-import org.springframework.stereotype.Repository;
 
 @Repository
 public class ClienteRepositoryImpl implements ClienteRepository {
@@ -20,5 +24,24 @@ public class ClienteRepositoryImpl implements ClienteRepository {
         ClienteOrmMongo orm = ClienteRepositoryAdapter.castEntity(cliente);
         ClienteOrmMongo ormSave = repository.save(orm);
         return ClienteRepositoryAdapter.castOrm(ormSave);
+    }
+
+    @Override
+    public List<Cliente> busqueTodos() {
+        return repository.findAll()
+                .stream()
+                .map(ClienteRepositoryAdapter::castOrm)
+                .toList();
+    }
+
+    @Override
+    public Optional<Cliente> busquePorId(String id) {
+        return repository.findById(id)
+                .map(ClienteRepositoryAdapter::castOrm);
+    }
+
+    @Override
+    public void deletePorId(String id) {
+        repository.deleteById(id);
     }
 }
